@@ -73,6 +73,20 @@ log(identity(2));
 
 // Function 'once' that ensures that a binary function can only be executed once and return undefined otherwise
 
+// Use 'once' function to ensures that a function can only perform an addition once
 
+// Function 'fromTo' of 'a' and 'b' that returns a function that increments 'a' by 1 while 'a' < 'b' 
+// when called and returns undefined otherwise
 
+// Function 'elements' of an array 'args' and a function 'generator' that returns a function which 
+// extract the element of 'args' at the index provided by the 'generator' function
 
+// Use this function 'elements' to extract the elements of ['a', 'b', 'c', 'd', 'e'] from index '1' to '3'
+
+// Function 'collect' of a function 'generator' and an array 'recipient' which returns a function 
+// that pushes the number produced by the 'generator' function to the array 'recipient' when called
+// and returns the number produced by the 'generator'
+
+// Use this function 'collect' to collect all the numbers from 0 to 4 into a 'recipient' array
+
+// 
