@@ -1,0 +1,22 @@
+{
+  "name": "javascipt-workshop",
+  "version": "1.0.0",
+  "description": "Function programming exercies in Javascript",
+  "main": "get_started.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stounio/javascript-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stounio/javascript-workshop/issues"
+  },
+  "homepage": "https://github.com/stounio/javascript-workshop#readme",
+  "devDependencies": {
+    "assert": "^2.0.0"
+  }
+}

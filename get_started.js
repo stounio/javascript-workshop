@@ -1,4 +1,5 @@
-import assert from 'assert';
+/*jshint esversion: 6 */
+const assert = require('assert');
 
 // Function 'log' that prints a message to the console
 log = arg => {console.log(arg)};
