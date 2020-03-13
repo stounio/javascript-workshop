@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This workshop focuses on exercising functional programming skills with Javascript via a series of exercises to be implemented `get_started.js` file.
+This workshop focuses on exercising functional programming skills with Javascript via a series of exercises to be implemented in `get_started.js` file.
 
 ## Requirements
 
