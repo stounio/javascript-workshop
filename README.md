@@ -1,5 +1,9 @@
 # Javascript Workshop
 
+## Introduction
+
+This workshop focuses on exercising functional programming skills with Javascript via a series of exercises to be implemented `get_started.js` file.
+
 ## Requirements
 
 Node.js installed on the local workstation.
