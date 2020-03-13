@@ -1,4 +1,4 @@
-# JAVASCRIPT WORKSHOP
+# Javascript Workshop
 
 ## Requirements
 
