@@ -9,33 +9,67 @@ log("Javascript in Action!");
 // 1 - Basic Arithmetic functions
 
 // Identity function: function that always returns the same value that was used as its argument
+identity = (a) => a;
 
 
-
-assert(identity(1) ==1);
-log(identity(2));
+assert(identity(2) ==2);
+log(identity(3));
 
 // Function 'add' that adds two numbers is the total of those values combined
 
+var add = (x, y) => {return x + y};
+assert (add(4, 5) == 9);
+
 // Function 'sub' that substracts two numbers:
 
+var sub = (a,b) => {return a - b};
+assert(sub(10, 4) == 6);
 // Function 'mul' that multiplies two numbers:
+
+var mul = (a, b) => {return a * b};
+
+assert(mul(4, 3) == 12);
 
 // 2 - Working with functions and function composition
 
 // Function 'identityf' of 'a' that returns a function identity of 'a'
+var identityf = (a) => () => identity(a);
+
+var identityOne = identityf(1);
+assert( identityOne() == 1);
 
 // Function 'addf' of 'a' that returns a function of 'b' that adds 'a' and 'b'
+
+var addf = (a) => (b) => add(a,b);
+
+assert(addf(2)(3) == 5);
 
 // Function 'liftf' of a binary function that returns a function of 'a' 
 // that returns a function of 'b' that executes the binary function on 'a' and 'b'
 
+var liftf = (f) => (a) => (b) => f(a, b);
+
+var curryAdd = liftf(add);
+assert(curryAdd(3)(4) == 7);
+
 // Apply this lift function to existing functions such as 'add' and 'mul'
 
+var curryMul = liftf(mul);
+assert(curryMul(3)(4) == 12);
+
+
 // Function 'curry' of a binary function and 'a' that returns a function of 'b'
-// which executes the binary function
+// which executes the binary function on 'a' and 'b'
+
+var curry = (f, a) => liftf(f)(a);
+
+assert(curry(add, 5)(3) == 8);
 
 // Apply the curry function to existing functions such as 'add' and 'mul'
+
+curyMul2 = curry(mul, 2);
+
+assert(curyMul2(4) == 8);
 
 // Find three possible solutions to create a function that increments a number by one 
 // by reusing the functions that already exists
