@@ -90,4 +90,24 @@ log(identity(2));
 
 // Use this function 'collect' to collect all the numbers from 0 to 4 into a 'recipient' array
 
-// 
+// Function 'filter' of a generator function and a predicate function that returns a function that returns
+// The number produced by the generator only when it satisfy the predicate and undefined once there is no more
+// numbers to generate
+
+// Function 'fibonacci' of 'a' and 'b' that returns a function that returns the next number of the 
+// fibonacci series when called
+
+// Function 'counter' of 'a' being the starting index that returns an object with a function 'next' that 
+// increments the index and a function 'prev' that decrements the index
+
+// Function 'revocable' of a unary function 'a' that returns an object with a function 'invoke' of 'b' that
+// applies the unary function 'a' on 'b' if defined and a 'revoke' function make the unary function undefined
+
+// Apply the function revocable to the identity function and try invoking the identity function after it has been
+// revoked
+
+// Function 'liftg' of a binary function 'a' that returns a function that will apply the binary function 'a' as follow:
+// liftg(mul)()); //undefined
+// liftg(mul)(3)()); // 3
+// liftg(mul)(3)(0)(4)()); // 0
+// liftg(mul)(1)(2)(4)(8)()); // 64
