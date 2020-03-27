@@ -74,44 +74,114 @@ assert(curyMul2(4) == 8);
 // Find three possible solutions to create a function that increments a number by one 
 // by reusing the functions that already exists
 
-
 // Use 'liftf' function to create a function 'inc' that increments a number by one
 
+inc1 = liftf(add)(1);
+
+assert(inc1(3) == 4);
 // Use the 'curry' function to create a function 'inc2' that increments a number by one
 
+inc2 = curry(add, 1);
+
+assert(inc2(5) == 6);
+
 // Use the 'addf' function to create a function 'inc3' that increments a number by one
+
+inc3 = addf(1);
+
+assert(inc3(4) == 5);
 
 // Function 'twice' of a binary function that returns a function of 'a' that executes
 // the binary function on 'a'
 
+twice = (f) => (a) => f(a,a);
+
+assert(twice(add)(3) == 6);
+
 // Function 'double' of 'a' that returns the doubles of the value of 'a' by reusing existing functions
 
+double = (a) => mul(a,2);
+
+assert(double(8) == 16);
+
+doubl2 = (a) => twice(add)(a);
+
+assert(doubl2(2) == 4);
+
 // Function 'square' of 'a' that returns the square of the values of 'a' by reusing existing functions
+
+square = (a) => twice(mul)(a);
+
+assert(square(3)==9);
 
 // Function 'reverse' of a binary function that returns a function of 'a' and 'b' and execute the 
 // binary function on 'b' and 'a'
 
-// Use 'reverse' with 'sub' function to reverse the result of a substraction
+reverse = (f) => (a,b) => f(b,a);
+
+assert(reverse(sub)(4,3) == -1);
+
+// Use 'reverse' with 'sub' function to reverse the result of a subtraction
+reverseSub = reverse(sub);
+
+assert(sub(6,4)== 2);
+assert(reverseSub(6,4)== -2);
+
 
 // Function 'composeu' of a unary function 'a' and unary function 'b' that return a function of 'c'
 // which execute 'b' on the result of 'a' over 'c'
 
+composeu = (a, b) => (c) => a(b(c));
+
 // Use 'composeu' to compute the square of the double of a number (e.g. (5) -> 100)
+assert(composeu(square, double)(2) == 16)
+
 
 // Function 'composeb' of a binary function 'a' and binary function 'b' that returns a function of 'c', 'd', 'e'
 // that executes 'b' over the result of 'a(c, d)' and 'e'
 
+composeb = (f1, f2) => (a, b, c) => f2(f1(a, b), c);
+
 // Use 'composeb' to multiply the sum of 'a' and 'b' by 'c' (e.g. (2,3,7) -> 35)
+assert(composeb(add ,mul)(2,3,7) == 35);
 
 
 // 3 - Closure in action
 
 // Function 'once' that ensures that a binary function can only be executed once and return undefined otherwise
+// function once(binaryFunction){
+//     var called = false;
+//     return function(a, b){
+//         if(!called){
+//             called = true;
+//             return binaryFunction(a, b);
 
-// Use 'once' function to ensures that a function can only perform an addition once
+//         }
+//         //return undefined; // This is the contract of a function
+//     };
+// }
+
+once = (f) => {
+    var counter = true;
+    return (a, b) => {
+        if (counter) {
+            counter = false;
+            return f(a,b);    
+        }
+    }
+};
+
+// Use 'once' function to ensures that a function can only perform a multiplication once
+onceMul = once(mul);
+
+assert(onceMul(2,2) == 4);
+assert(onceMul(2,3) === undefined);
+
 
 // Function 'fromTo' of 'a' and 'b' that returns a function that increments 'a' by 1 while 'a' < 'b' 
 // when called and returns undefined otherwise
+
+
 
 // Function 'elements' of an array 'args' and a function 'generator' that returns a function which 
 // extract the element of 'args' at the index provided by the 'generator' function
